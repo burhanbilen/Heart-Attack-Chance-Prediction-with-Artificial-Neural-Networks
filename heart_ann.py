@@ -12,10 +12,11 @@ X = df.iloc[:,0:13].values
 y = df.iloc[:,13:14].values
 y = array(y).reshape(len(y),1)
 
-sc = StandardScaler()
-X = sc.fit_transform(X)
-
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.15)
+
+sc = StandardScaler()
+X_train = sc.fit_transform(X_train)
+X_test = sc.transform(X_test)
 
 model = Sequential()
 model.add(Dense(16, activation = 'relu'))
